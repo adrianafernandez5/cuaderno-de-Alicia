@@ -212,29 +212,29 @@ Podría usar "cat" que significa "concatenate BAMs", no obstante esta función s
 
 4.  *¿Cuánto espacio de disco ocupan los archivos FASTQ, el genoma de referencia y su índice y el archivo SAM?*
 
-    +---------------------------------+--------------------------+-----------------------------------------------------------------------+
-    | Tipo de archivo                 | Nombre del archivo       | Espacio de disco duro gastado                                         |
-    +=================================+==========================+=======================================================================+
-    | FASTQ                           | DRR025089_1_clean:       | 73.336 KB                                                             |
-    |                                 |                          |                                                                       |
-    |                                 | DRR025089_2_clean:       | 73.772 KB                                                             |
-    |                                 |                          |                                                                       |
-    |                                 | DRR025089_m_clean:       | 107.702 KB                                                            |
-    +---------------------------------+--------------------------+-----------------------------------------------------------------------+
-    | Genoma de referencia            | referencia.fa            | 9.952 KB                                                              |
-    +---------------------------------+--------------------------+-----------------------------------------------------------------------+
-    | Índice del genoma de referencia | referencia.fa.sa         | 4.895 KB                                                              |
-    |                                 |                          |                                                                       |
-    |                                 | referencia.fa.bwt        | 9.789 KB                                                              |
-    |                                 |                          |                                                                       |
-    |                                 | referencia.fa.pac:       | 2.447 KB                                                              |
-    |                                 |                          |                                                                       |
-    |                                 | referencia.fa.ann:       | 1 KB                                                                  |
-    |                                 |                          |                                                                       |
-    |                                 | referencia.fa.amb:       | 1 KB                                                                  |
-    +---------------------------------+--------------------------+-----------------------------------------------------------------------+
-    | Archivos SAM                    | \-                       | Por alguna razón no me salen los archivos BAM. Así que no sé su peso. |
-    +---------------------------------+--------------------------+-----------------------------------------------------------------------+
+    +---------------------------------+--------------------+------------------------------------+
+    | Tipo de archivo                 | Nombre del archivo | Espacio de disco duro gastado      |
+    +=================================+====================+====================================+
+    | FASTQ                           | DRR025089_1_clean: | 73.336 KB                          |
+    |                                 |                    |                                    |
+    |                                 | DRR025089_2_clean: | 73.772 KB                          |
+    |                                 |                    |                                    |
+    |                                 | DRR025089_m_clean: | 107.702 KB                         |
+    +---------------------------------+--------------------+------------------------------------+
+    | Genoma de referencia            | referencia.fa      | 9.952 KB                           |
+    +---------------------------------+--------------------+------------------------------------+
+    | Índice del genoma de referencia | referencia.fa.sa   | 4.895 KB                           |
+    |                                 |                    |                                    |
+    |                                 | referencia.fa.bwt  | 9.789 KB                           |
+    |                                 |                    |                                    |
+    |                                 | referencia.fa.pac: | 2.447 KB                           |
+    |                                 |                    |                                    |
+    |                                 | referencia.fa.ann: | 1 KB                               |
+    |                                 |                    |                                    |
+    |                                 | referencia.fa.amb: | 1 KB                               |
+    +---------------------------------+--------------------+------------------------------------+
+    | Archivos SAM                    | DRR025089.sam      | 184 KB                             |
+    +---------------------------------+--------------------+------------------------------------+
 
 5.  *Podíamos haber ahorrado algún paso aprovechando las tuberías de BASH:*
 
@@ -272,8 +272,7 @@ plot(COV$cobertura, COV$bases, type = 'l')
 
 ## Desafíos
 
-1.  *La distribución de cobertura tiene una cola larga. ¿Puedes centrar la representación gráfica entre 0 y 20? Pista: usa la opción `xlim` de `plot()`.* La opción xlim sirve para establecer los límites del eje x. De esta forma le digo que sea una representación gráfica entre 0 y 20. Si quisiera hacerlo pero para el eje y usaría la opción ylim. COV$bases hace referencia al número de bases. ´
-    COV$cobertura hace referencia a la cobertura.
+1.  *La distribución de cobertura tiene una cola larga. ¿Puedes centrar la representación gráfica entre 0 y 20? Pista: usa la opción `xlim` de `plot()`.* La opción xlim sirve para establecer los límites del eje x. De esta forma le digo que sea una representación gráfica entre 0 y 20. Si quisiera hacerlo pero para el eje y usaría la opción ylim.
 
 ```{r}
 plot(COV$cobertura, COV$bases, 
@@ -284,9 +283,13 @@ plot(COV$cobertura, COV$bases,
      ylab = "COV$cobertura")
 ```
 
-2.  *¿Qué otras estadísticas crees que vale la pena revisar?* Podríamos ver cuántas lecturas se han representado contra el genoma de referencia.
+2.  *¿Qué otras estadísticas crees que vale la pena revisar?*
 
-3.  *El genoma de referencia incluye dos plásmidos. ¿La cepa secuenciada los tiene?* Usamos idxstats ya que hace un resumen del alineamiento. En este caso veo tres alineamientos, lo que indica que además del DNA cromosómico se incluye el plasmídico en las cepas.
+    Podríamos ver cuántas lecturas se han representado contra el genoma de referencia.
+
+3.  *El genoma de referencia incluye dos plásmidos. ¿La cepa secuenciada los tiene?*
+
+    Usamos idxstats ya que hace un resumen del alineamiento. En este caso veo tres alineamientos, lo que indica que además del DNA cromosómico se incluye el plasmídico en las cepas.
 
 ```{bash}
 samtools idxstats DRR025089_m.bam
