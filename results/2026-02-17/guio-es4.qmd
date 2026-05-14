@@ -21,8 +21,8 @@ Descargaremos un genoma de referencia del género *Trypanosoma*, así como su an
 
 ```{bash}
 if [ ! -e  trypanosoma_annotated.txt ]; then
-   datasets summary genome taxon Trypanosoma --annotated --as-json-lines | \
-   dataformat tsv genome --fields \
+   ../../../bin/datasets summary genome taxon Trypanosoma --annotated --as-json-lines | \
+   ../../../dataformat tsv genome --fields \
       accession,organism-name,assminfo-release-date,assminfo-level,assmstats-atgc-count,annotinfo-featcount-gene-total,assminfo-type,assminfo-status > trypanosoma_annotated.txt
 fi
 ```
@@ -218,7 +218,28 @@ resumen <- data.frame(
 ### Desafío
 
 *¿Sabrías completar el marco de datos `resumen` con los datos de los otros cuatro tipos de anotación funcional?*
+Primero calculamos la longitud de cada dato:
+```{r}
 
+gene$longitud   <- gene$end - gene$start + 1
+mrna$longitud   <- mrna$end - mrna$start + 1
+exon$longitud   <- exon$end - exon$start + 1
+region$longitud <- region$end - region$start + 1
+```
+Ahora lo juntamos todo en una tabla:
+```{r}
+
+resumen_completo <- rbind(
+  resumen, 
+  data.frame(tipo = 'gene',   número = nrow(gene),   long.Media = mean(gene$longitud),   long.SD = sd(gene$longitud)),
+  data.frame(tipo = 'mRNA',   número = nrow(mrna),   long.Media = mean(mrna$longitud),   long.SD = sd(mrna$longitud)),
+  data.frame(tipo = 'exon',   número = nrow(exon),   long.Media = mean(exon$longitud),   long.SD = sd(exon$longitud)),
+  data.frame(tipo = 'region', número = nrow(region), long.Media = mean(region$longitud), long.SD = sd(region$longitud))
+)
+
+
+print(resumen_completo)
+```
 Este tipo de operación es bastante habitual, y se puede hacer sin necesidad de crear marcos de datos parciales. La función `split()` divide las líneas de un marco de datos en tantos marcos de datos como valores diferentes (*niveles*) haya en el *factor* que usemos para definir los grupos. El resultado es un solo objeto: una *lista* de marcos de datos:
 
 ```{r}
@@ -280,7 +301,16 @@ kable(resumen,
 ### Desafío
 
 *Crea una tabla con el número total de genes en cada cromosoma. ¿Puedes contar cuántos hay codificados en cada sentido ("strand") y en cada cromosoma?*
+```{r}
+library(dplyr)
+genes_por_cromosomaysentido <- gff %>%
+  dplyr::filter(type == 'gene') %>%      
+  group_by(seqid, strand) %>%             
+  summarise(total_genes = n())    
 
+print(genes_por_cromosomaysentido)
+```
+En el código filtramos por genes y agrupamos por sequid, que es como se denominan los diferentes cromosomas en el objeto gff y por strand, que es el sentido. El resultado nos da el numero de genes por cromosoma y por sentido.
 ## Comparar o cruzar datos
 
 Imagina que un estudio señala los cromosomas siguientes como posiblemente asociados a la resistencia a un fármaco. Quieres saber qué genes hay en estos cinco cromosomas:
@@ -306,6 +336,18 @@ dim(interesantes)
 ### Desafío
 
 *¿Puedes limitar la selección a anotaciones de tipo "gene"?*
+Utilizamos el paquete dplyr como antes:
+```{r}
+library(dplyr)
+
+interesantes2 <- gff %>%
+  dplyr::filter(seqid %in% candidatos, type == "gene")
+
+# Comprobamos las nuevas dimensiones
+dim(interesantes2)
+```
+Ahora el objeto interesantes2 es más pequeño, porque se ha limitado la selección a anotaciones de tipo gene.
+
 
 El estudio avanza y reduce el tamaño de las regiones candidatas, así que ahora necesitas identificar los genes presentes en exactamente las regiones siguientes:
 
@@ -332,12 +374,28 @@ interesantes <- gff[f, ]
 ### Desafío
 
 *¿Puedes cambiar los filtros para que incluyan también genes parcialmente contenidos en los intervalos indicados?*
+```{r}
+f1 <- gff$seqid == 'JAJSEB010000048.1' & gff$start <= 253478 & gff$end >= 184638
+f2 <- gff$seqid == 'JAJSEB010000012.1' & gff$start <= 348860 & gff$end >= 133444
+f3 <- gff$seqid == 'JAJSEB010000020.1' & gff$start <= 149614 & gff$end >= 73393
+f4 <- gff$seqid == 'JAJSEB010000016.1' & gff$start <= 272009 & gff$end >= 161247
+f5 <- gff$seqid == 'JAJSEB010000033.1' & gff$start <= 170687 & gff$end >= 123135
 
+f <- f1 | f2 | f3 | f4 | f5
+
+interesantes <- gff[f, ]
+```
+Se intercambia el inicio y el final del intervalo. El final del gen tiene que ser igual o mayor al inicio del intervalo y el inicio del gen tiene que ser menor o igual que el final del intervalo.
 ## Las llaves y la función `match()`
 
 En las bases de datos relacionales se llama *llave* a la columna o al conjunto de columnas cuyos valores identifican unívocamente cada línea de la tabla. En los marcos de datos de R, las líneas pueden tener nombre, el cual puede usarse como *llave* o índice para seleccionar líneas. Pero el uso del nombre de las líneas no es recomendable. Lo más práctico es que en cualquier tabla haya una columna cuyos valores no puedan repetirse. Esto ayuda a evitar duplicidades, mantener la integridad de la tabla y relacionar unas tablas con otras.
 
 ¿Cuál es la *llave* en un archivo GFF?
+Es la columna de atributos, se puede ver utilizando el comando head(gff)
+```{r}
+head(gff)
+```
+
 
 El código siguiente descarga la tabla de genomas de *Trypanosoma* ensamblados a nivel de cromosoma, de la [European Nucleotide Archive](https://www.ebi.ac.uk/ena/)
 
