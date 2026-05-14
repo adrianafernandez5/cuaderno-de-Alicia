@@ -744,23 +744,23 @@ The states are a c g t </code></pre>
 <pre><code>model: GTR+G(4)+I 
 loglikelihood: -39274.08 
 unconstrained loglikelihood: -45918.42 
-Proportion of invariant sites: 0.65887 
+Proportion of invariant sites: 0.6588696 
 Model of rate heterogeneity: Discrete gamma model
 Number of rate categories: 4 
-Shape parameter: 0.9845044 
+Shape parameter: 0.9844964 
        Rate Proportion
-1 0.0000000  0.6588700
-2 0.3923775  0.0852825
-3 1.3837663  0.0852825
-4 2.9237659  0.0852825
-5 7.0258257  0.0852825
+1 0.0000000 0.65886957
+2 0.3923723 0.08528261
+3 1.3837573 0.08528261
+4 2.9237581 0.08528261
+5 7.0258324 0.08528261
 
 Rate matrix:
           a          c          g         t
-a  0.000000  1.9690091 62.9036096  1.213235
-c  1.969009  0.0000000  0.6641348 46.735645
-g 62.903610  0.6641348  0.0000000  1.000000
-t  1.213235 46.7356454  1.0000000  0.000000
+a  0.000000  1.9689773 62.9023900  1.213207
+c  1.968977  0.0000000  0.6641171 46.734677
+g 62.902390  0.6641171  0.0000000  1.000000
+t  1.213207 46.7346771  1.0000000  0.000000
 
 Base frequencies:  
         a         c         g         t 
@@ -775,23 +775,23 @@ Base frequencies:
 <pre><code>model: TIM2+G(4)+I 
 loglikelihood: -39277.23 
 unconstrained loglikelihood: -45918.42 
-Proportion of invariant sites: 0.6583893 
+Proportion of invariant sites: 0.6583878 
 Model of rate heterogeneity: Discrete gamma model
 Number of rate categories: 4 
-Shape parameter: 0.9826952 
+Shape parameter: 0.9826787 
        Rate Proportion
-1 0.0000000 0.65838931
-2 0.3907613 0.08540267
-3 1.3801908 0.08540267
-4 2.9187389 0.08540267
-5 7.0195442 0.08540267
+1 0.0000000 0.65838784
+2 0.3907499 0.08540304
+3 1.3801700 0.08540304
+4 2.9187180 0.08540304
+5 7.0195472 0.08540304
 
 Rate matrix:
           a         c        g         t
-a  0.000000  2.028459 77.78373  2.028459
-c  2.028459  0.000000  1.00000 57.870033
-g 77.783725  1.000000  0.00000  1.000000
-t  2.028459 57.870033  1.00000  0.000000
+a  0.000000  2.028473 77.78393  2.028473
+c  2.028473  0.000000  1.00000 57.870215
+g 77.783930  1.000000  0.00000  1.000000
+t  2.028473 57.870215  1.00000  0.000000
 
 Base frequencies:  
         a         c         g         t 
@@ -801,7 +801,270 @@ Base frequencies:
 <section id="ejercicio-7" class="level3">
 <h3 class="anchored" data-anchor-id="ejercicio-7">Ejercicio 7</h3>
 <p><em>¿Cuál es el mejor modelo para secuencias sólo del género Homo?</em></p>
+<p>Para hacer esto he seguido el mismo planteamiento que en el caso anterior.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>modelos2 <span class="ot">&lt;-</span> <span class="fu">modelTest</span>(mtdna28, <span class="at">control =</span> <span class="fu">pml.control</span>(<span class="at">trace =</span> <span class="dv">0</span>)) </span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">as.pml</span>(modelos2, <span class="st">'BIC'</span>) </span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>fit2 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>model: TrN+G(4)+I 
+loglikelihood: -28824.07 
+unconstrained loglikelihood: -45918.42 
+Proportion of invariant sites: 0.8147549 
+Model of rate heterogeneity: Discrete gamma model
+Number of rate categories: 4 
+Shape parameter: 1.001256 
+        Rate Proportion
+1  0.0000000 0.81475488
+2  0.7406637 0.04631128
+3  2.5756634 0.04631128
+4  5.3993746 0.04631128
+5 12.8773093 0.04631128
+
+Rate matrix:
+         a        c        g        t
+a  0.00000  1.00000 54.02861  1.00000
+c  1.00000  0.00000  1.00000 31.99673
+g 54.02861  1.00000  0.00000  1.00000
+t  1.00000 31.99673  1.00000  0.00000
+
+Base frequencies:  
+        a         c         g         t 
+0.3088407 0.3122559 0.1312366 0.2476667 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">as.pml</span>(modelos2, <span class="st">'BIC'</span>) </span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>fit2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>model: TrN+G(4)+I 
+loglikelihood: -28824.07 
+unconstrained loglikelihood: -45918.42 
+Proportion of invariant sites: 0.8147549 
+Model of rate heterogeneity: Discrete gamma model
+Number of rate categories: 4 
+Shape parameter: 1.001256 
+        Rate Proportion
+1  0.0000000 0.81475488
+2  0.7406637 0.04631128
+3  2.5756634 0.04631128
+4  5.3993746 0.04631128
+5 12.8773093 0.04631128
+
+Rate matrix:
+         a        c        g        t
+a  0.00000  1.00000 54.02861  1.00000
+c  1.00000  0.00000  1.00000 31.99673
+g 54.02861  1.00000  0.00000  1.00000
+t  1.00000 31.99673  1.00000  0.00000
+
+Base frequencies:  
+        a         c         g         t 
+0.3088407 0.3122559 0.1312366 0.2476667 </code></pre>
+</div>
+</div>
+<p>El mejor modelo en este caso es TrN+G(4)+I</p>
 </section>
+</section>
+<section id="máxima-verosimilitud" class="level2">
+<h2 class="anchored" data-anchor-id="máxima-verosimilitud">Máxima verosimilitud</h2>
+<p>Tras seleccionar el modelo, optimizamos la topología del árbol, longitudes de la ramas y otros parámetros del modelo. Usaremos la función pml_bb(), que internamente usa las funciones pml() y optim.pml(). Podemos modular el comportamiento de pml_bb() (cuánta información muestra del proceso, cuántas iteraciones usa, cuándo decide que no puede mejorar el modelo…) con los parámetros definidos mediante pml.control(). A la función pml_bb() podemos proporcionarle el alineamiento (objeto de clase phyDat) y el nombre del modelo de evolución molecular, o bien un objeto de clase modelTest, de donde toma automáticamente el alineamiento y el modelo con un valor de BIC (Bayesian Information Criterion) más bajo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>mt_ml <span class="ot">&lt;-</span> <span class="fu">pml_bb</span>(modelos, <span class="at">control =</span> <span class="fu">pml.control</span>(<span class="at">trace =</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>El objeto mt_ml, de clase pml, contiene el árbol (mt_ml$tree), además de los parámetros optimizados del modelo. Antes de ver el árbol, echémosle un vistazo al modelo ajustado, para ver cuánto se aparta del que habíamos ajustado con modelTest().</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>mt_ml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>model: TIM2+G(4)+I 
+loglikelihood: -39277.23 
+unconstrained loglikelihood: -45918.42 
+Proportion of invariant sites: 0.6581107 
+Model of rate heterogeneity: Discrete gamma model
+Number of rate categories: 4 
+Shape parameter: 0.9807935 
+       Rate Proportion
+1 0.0000000 0.65811074
+2 0.3893244 0.08547231
+3 1.3773516 0.08547231
+4 2.9153978 0.08547231
+5 7.0176211 0.08547231
+
+Rate matrix:
+          a         c        g         t
+a  0.000000  2.028573 77.76434  2.028573
+c  2.028573  0.000000  1.00000 57.869030
+g 77.764340  1.000000  0.00000  1.000000
+t  2.028573 57.869030  1.00000  0.000000
+
+Base frequencies:  
+        a         c         g         t 
+0.3094827 0.3112863 0.1305929 0.2486381 </code></pre>
+</div>
+</div>
+<p>El modelo recomendado es TIM2+G(4)+I</p>
+<p>Por defecto, pml_bb() usa un método de reordenación del árbol denominado “stochastic”, genera un árbol no enraizado y 1000 pseudo-réplicas de bootstrap. Al pedirle la representación gráfica, añade automáticamente los valores de soporte de bootstrap y lo enraiza en el punto medio:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mt_ml, <span class="at">align.tip.label =</span> <span class="cn">TRUE</span>, <span class="at">main =</span> <span class="st">'Árbol más verosímil'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Práctica-9_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="ejercicio-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8">Ejercicio 8</h3>
+<p><em>A) El árbol no está enraizado. Como las secuencias no son todas de la misma época, utiliza rtt() para situar la raíz en el punto más compatible con la hipótesis de reloj molecular.</em></p>
+<p>Para ello he seguido el mismo procedimiento que en el que se ha realizado anteriormente.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>fechas2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">400000</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">39000</span>, <span class="sc">-</span><span class="dv">50000</span>, <span class="sc">-</span><span class="dv">110000</span>, <span class="sc">-</span><span class="dv">110000</span>, <span class="sc">-</span><span class="dv">122287</span>, <span class="sc">-</span><span class="dv">43230</span>, <span class="sc">-</span><span class="dv">82752</span>, <span class="sc">-</span><span class="dv">50000</span>, <span class="sc">-</span><span class="dv">43780</span>, <span class="sc">-</span><span class="dv">39000</span>, <span class="sc">-</span><span class="dv">38310</span>, <span class="sc">-</span><span class="dv">38515</span>, <span class="sc">-</span><span class="dv">42540</span>, <span class="sc">-</span><span class="dv">40000</span>, <span class="sc">-</span><span class="dv">44290</span>, <span class="sc">-</span><span class="dv">49000</span>, <span class="sc">-</span><span class="dv">65000</span>, <span class="sc">-</span><span class="dv">110450</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>) </span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>fechas2 <span class="ot">&lt;-</span> <span class="fu">setNames</span>(fechas2, mt_ml<span class="sc">$</span>tip.label) </span>
+<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>fechas2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]       0       0       0       0 -400000       0       0       0       0
+[10]  -39000  -50000 -110000 -110000 -122287  -43230  -82752  -50000  -43780
+[19]  -39000  -38310  -38515  -42540  -40000  -44290  -49000  -65000 -110450
+[28]       0       0       0       0       0       0       0       0       0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>mt_ml_rtt <span class="ot">&lt;-</span> <span class="fu">rtt</span>(mt_ml<span class="sc">$</span>tree, <span class="at">tip.dates =</span> fechas2, <span class="at">objective =</span> <span class="st">'rms'</span>) </span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mt_ml_rtt, <span class="at">align.tip.label =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Práctica-9_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><em>B) ¿Podrías obtener el árbol más verosímil para el subconjunto de secuencias del género Homo?</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>mt_ml2 <span class="ot">&lt;-</span> <span class="fu">pml_bb</span>(modelos2,                 </span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">control =</span> <span class="fu">pml.control</span>(<span class="at">trace =</span> <span class="dv">0</span>)) </span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mt_ml2, <span class="at">align.tip.label =</span> <span class="cn">TRUE</span>, <span class="at">main =</span> <span class="st">'Árbol más verosímil'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Práctica-9_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="con-datación-de-puntas-tip-dating" class="level2">
+<h2 class="anchored" data-anchor-id="con-datación-de-puntas-tip-dating">Con datación de puntas (tip dating)</h2>
+<p>El método de máxima verosimilitud genera árboles no enraizados por defecto, como consecuencia de la reversibilidad temporal. En esos árboles las longitudes de ramas són el número esperado de sustituciones por sitio, sin ninguna referencia explícita al tiempo. Pero cuando no todas las secuencias son isócronas, podemos usar la información de sus edades para constreñir la búsqueda del árbol más verosímil. Al usar las edades de las secuencias, estamos asumiendo un reloj molecular: una relación constante entre el tiempo y el número esperado de sustituciones acumuladas. Entonces, la posición de la raíz afecta la verosimilitud y el resultado es un árbol enraizado.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Habíamos creado el vector "fechas", pero incluye al gorila. </span></span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>fechas36 <span class="ot">&lt;-</span> fechas[<span class="fu">names</span>(mtdna36)] </span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>mt_ml_clock <span class="ot">&lt;-</span> <span class="fu">pml_bb</span>(modelos,                       </span>
+<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">method =</span> <span class="st">'tipdated'</span>,                       </span>
+<span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">tip.dates =</span> fechas36, <span class="at">rearrangement =</span> <span class="st">'NNI'</span>,                       </span>
+<span id="cb97-6"><a href="#cb97-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">control =</span> <span class="fu">pml.control</span>(<span class="at">trace =</span> <span class="dv">0</span>))  </span>
+<span id="cb97-7"><a href="#cb97-7" aria-hidden="true" tabindex="-1"></a>mt_ml_clock</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>model: TIM2+G(4)+I 
+loglikelihood: -41234.1 
+unconstrained loglikelihood: -45918.42 
+Proportion of invariant sites: 0.7647944 
+Model of rate heterogeneity: Discrete gamma model
+Number of rate categories: 4 
+Shape parameter: 1.094113 
+          Rate Proportion
+1 0.000000e+00  0.7647944
+2 7.651714e-09  0.0588014
+3 2.479244e-08  0.0588014
+4 4.994725e-08  0.0588014
+5 1.146396e-07  0.0588014
+
+Rate: 1.15857e-08 
+
+Rate matrix:
+          a         c        g         t
+a  0.000000  2.318919 57.89025  2.318919
+c  2.318919  0.000000  1.00000 47.946762
+g 57.890255  1.000000  0.00000  1.000000
+t  2.318919 47.946762  1.00000  0.000000
+
+Base frequencies:  
+        a         c         g         t 
+0.3094827 0.3112863 0.1305929 0.2486381 
+
+Rate: 1.15857e-08 </code></pre>
+</div>
+</div>
+<p>En este caso el modelo TIM2+G(4)+I.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mt_ml_clock, <span class="at">align.tip.label =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Práctica-9_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="ejercicio-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-9">Ejercicio 9</h3>
+<p><em>A)¿Cuál es la tasa de mutación global estimada?</em></p>
+<p>A partir de los datos obtenidos anteriores, concluyo que la tasa de mutación es de 1.15857e-08.</p>
+<p><em>B) ¿En qué unidades está expresada?</em></p>
+<p>Corresponde al número de mutaciones por sitio, por lo que estas son las unidades.</p>
+<p><em>C) ¿Cuánto tiempo dice el árbol que divergimos de los chimpancés? (Puedes usar la función cophenetic(), puesto que en el árbol datado las longitudes de las ramas están en años).</em></p>
+<p>He consultado la ayuda de la función cophenetic () y luego he procedido tal y como se ha hecho anteriormente en esta práctica. Esta función calcula la distancia entre dos ramas del árbol (como se ha visto antes, en los árboles las distancias se representan mediante la suma de las longitudes que separan las hojas). En mi caso, he visualizado en la consola de R studio la distancia entre humanos-chimpancés que es de <u>1804164,5 años</u>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>distCofen2 <span class="ot">&lt;-</span> <span class="fu">cophenetic</span>(mt_ml_clock<span class="sc">$</span>tree)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="estimación-de-edades" class="level2">
+<h2 class="anchored" data-anchor-id="estimación-de-edades">Estimación de edades</h2>
+<p>Las edades de las secuencias aportan información sobre el reloj molecular en la medida en que se echen de menos las mutaciones que dejaron de acumularse en las secuencias arcaicas. Esta información puede ser muy útil en filogenias de virus de ARN muestreados a lo largo de los años. Pero en una filogenia de millones de años, la poca información de las puntas no es suficiente para datar con exactitud las divergencias antiguas. Hay otras estrategias. Podríamos fijar una tasa de mutación conocida y estimar sólo los otros parámetros. Alternativamente, podemos dar la fecha de algún nodo interno para ayudar a calibrar el reloj. <em>Por ejemplo, supondremos que el ancestro común más reciente entre humanos y chimpancés vivió hace 6.5 millones de años.</em></p>
+<p>Esta información se la proporcionamos a la función estimate.dates() mediante un vector de fechas o edades de las secuencias que incluya no sólo las hojas del árbol sino también los nodos internos, o al menos aquellos de los que conocemos la edad. El vector debe tener tantos componentes como nodos internos y hojas tiene el árbol, con valores NA en las edades desconocidas. Para saber en qué orden están numerados los nodos, podemos ejecutar lo siguiente:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>mt_ml_rtt <span class="ot">&lt;-</span> <span class="fu">rtt</span>(mt_ml<span class="sc">$</span>tree, fechas36) </span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mt_ml_rtt, <span class="at">align.tip.label =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nodelabels</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Práctica-9_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Como suele suceder, la raíz (en los árboles enraizados) es el nodo que sigue a las hojas, es decir el 37, porque los 36 primeros números son las puntas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>fechasNodos <span class="ot">&lt;-</span> <span class="fu">c</span>(fechas36, <span class="sc">-</span><span class="dv">6500000</span>, <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">34</span>)) </span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>fechasEstimadas <span class="ot">&lt;-</span> <span class="fu">estimate.dates</span>(mt_ml_rtt, fechasNodos) </span>
+<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>tasaEstimada <span class="ot">&lt;-</span> <span class="fu">estimate.mu</span>(mt_ml_rtt, fechasNodos) </span>
+<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos una copia del árbol... </span></span>
+<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a>mt_ml_años <span class="ot">&lt;-</span> mt_ml_rtt </span>
+<span id="cb102-6"><a href="#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ...y actualizamos las longitudes de sus ramas como la resta # entre las fechas de los nodos que conectan: </span></span>
+<span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a>mt_ml_años<span class="sc">$</span>edge.length <span class="ot">&lt;-</span> fechasEstimadas[mt_ml_años<span class="sc">$</span>edge[,<span class="dv">2</span>]] <span class="sc">-</span>                           </span>
+<span id="cb102-8"><a href="#cb102-8" aria-hidden="true" tabindex="-1"></a>  fechasEstimadas[mt_ml_años<span class="sc">$</span>edge[,<span class="dv">1</span>]] </span>
+<span id="cb102-9"><a href="#cb102-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mt_ml_años) </span>
+<span id="cb102-10"><a href="#cb102-10" aria-hidden="true" tabindex="-1"></a><span class="fu">axisPhylo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Práctica-9_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>tasaEstimada</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.31428e-08</code></pre>
+</div>
+</div>
+<p>La tasa estimada es de 1.31428e-08.</p>
+<p>Al forzar que la raíz esté a unos 6.5 millones de años, la tasa de mutación estimada disminuye. Es habitual que las tasas parezcan diferentes a diferentes profundidades del árbol, o entre linajes diferentes.</p>
 </section>
 </section>
 
