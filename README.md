@@ -10,8 +10,8 @@ D) Práctica 4. Trabajar con tablas o marcos de datos con R\
 E) Práctica 5. Búsquedas programáticas en la base de datos ENA\
 F) Práctica 6. Búsquedas programáticas en Interpro\
 G) Práctica 7. Visualización y exploración de datos\
-I) Práctica 8. BLAST\
-J) Práctica 9. Reconstrucción filogenética\
-K) Práctica 10. Ensamblaje de genomas\
-L) Práctica 11. Anotación\
-M) Práctica 12. Análisis de expresión diferencial
+H) Práctica 8. BLAST\
+I) Práctica 9. Reconstrucción filogenética\
+J) Práctica 10. Ensamblaje de genomas\
+K) Práctica 11. Anotación\
+L) Práctica 12. Análisis de expresión diferencial
