@@ -14,4 +14,4 @@ I) Práctica 8. BLAST\
 J) Práctica 9. Reconstrucción filogenética\
 K) Práctica 10. Ensamblaje de genomas\
 L) Práctica 11. Anotación\
-M) Práctica 12. Análisis de expresión diferencial\
+M) Práctica 12. Análisis de expresión diferencial
