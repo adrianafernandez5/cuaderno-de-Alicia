@@ -90,8 +90,7 @@ if [ ! -e asm1/At4.bp.p_ctg.gfa ]; then
 fi
 ```
 
-En mi caso, R no reconoce hifiasm. He utilizado el PATH. Son problemas de relacionar bash con R studio. Otra opción es al principio del bloque definir una variable HF = \~/bin/hifiasm/hifiasm (esto último es el path). De forma que cada vez que queremos ejectuar hifiasm ejecutamos dolar-HF. Si otra persona lo tiene que ejecutar varias veces, sólo se cambia una línea.
-Otra solución en vez de definir una variable podemos definirr al principio: export PATH = \~/bin/hifiasm/hifiasm:\$PATH. Tenemos que tener en cuenta que el orden importa, porque empieza a buscar cualquier ejecutables a partir de la primera carpeta del PATH. Es mejor añadir algo al final del PATH. Si al principio del bloque exportamos el nuevo PATH, encontrará a hifiasm. En cada bloque R studio inicia una nueva sesión de bash.
+En mi caso, R no reconoce hifiasm. He utilizado el PATH. Son problemas de relacionar bash con R studio. Otra opción es al principio del bloque definir una variable HF = \~/bin/hifiasm/hifiasm (esto último es el path). De forma que cada vez que queremos ejectuar hifiasm ejecutamos dolar-HF. Si otra persona lo tiene que ejecutar varias veces, sólo se cambia una línea. Otra solución en vez de definir una variable podemos definirr al principio: export PATH = \~/bin/hifiasm/hifiasm:\$PATH. Tenemos que tener en cuenta que el orden importa, porque empieza a buscar cualquier ejecutables a partir de la primera carpeta del PATH. Es mejor añadir algo al final del PATH. Si al principio del bloque exportamos el nuevo PATH, encontrará a hifiasm. En cada bloque R studio inicia una nueva sesión de bash.
 
 Las opciones significan lo siguiente:
 
@@ -162,3 +161,26 @@ cd ~/bin
 wget https://github.com/huangnengCSU/compleasm/releases/download/v0.2.7/compleasm-0.2.7_x64-linux.tar.bz2
 tar -jxvf compleasm-0.2.7_x64-linux.tar.bz2
 ```
+
+::: {.callout-note icon="false"}
+### Ejercicio 4
+
+1.  Consulta la ayuda de `compleasm.py`y averigua que significan los argumentos utilizados.
+
+-   -t: número de threads
+-   -l: especifica el linaje
+-   -a: especifica el archivo de ensamblaje
+-   -o: especifica el directorio de salida
+:::
+
+::: {.callout-note icon="false"}
+### Ejercicio 5
+
+Instala bandage, carga el grafo del ensamblaje realizado y genera una figura. Puedes añadir la figura al informe HTML mediante la sitaxis siguiente:
+
+
+![grafo del ensamblaje](grafo_pr10.png)
+
+
+:::
+
